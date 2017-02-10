@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <div class="container">
+     <ul class="nav nav-tabs">
+       <li><%= link_to "Blocipedia", root_path %></li>
+       <li><%= link_to "Wiki", wikis_path %></li>
+     </ul>
     <div class="pull-right user-info">
       <% if user_signed_in? %>
         Signed in as: <strong><%= current_user.email %></strong> |
@@ -20,5 +25,6 @@
       <% end %>
     </div>
     <%= yield %>
+  </div>
   </body>
 </html>
