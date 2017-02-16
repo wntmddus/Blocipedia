@@ -14,6 +14,9 @@
      <ul class="nav nav-tabs">
        <li><%= link_to "Blocipedia", root_path %></li>
        <li><%= link_to "Wiki", wikis_path %></li>
+       <% if current_user && current_user.role == :standard %>
+          <li><%= link_to "Payment", new_charge_path %></li>
+       <% end %>
      </ul>
     <div class="pull-right user-info">
       <% if user_signed_in? %>

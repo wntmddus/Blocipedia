@@ -1,0 +1,5 @@
+<h3><%= @user.email %></h3>
+<%= @user.role.to_s %>
+<% if @user.premium? && (current_user == @user || current_user.admin?) %>
+  <%= button_to "Downgrade", downgrade_user_path(@user) %>
+<% end %>

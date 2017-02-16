@@ -25,6 +25,8 @@ gem 'bootstrap-sass'
 gem 'jquery-turbolinks'
 gem "pundit"
 gem 'faker'
+gem 'stripe'
+gem 'figaro'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

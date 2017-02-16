@@ -6,9 +6,9 @@ class WikiPolicy < ApplicationPolicy
     @wiki = record
   end
   def update?
-    user.admin? || wiki.user == user
+    user && (user.admin? || wiki.user == user)
   end
   def show?
-    user.admin? || wiki.user == user
+    user && (user.admin? || wiki.user == user)
   end
 end
