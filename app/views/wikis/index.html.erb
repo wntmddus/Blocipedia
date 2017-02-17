@@ -1,13 +1,40 @@
 <h1>All Wikis</h1>
+<% if user_signed_in? %>
 <div class="form-group">
   <%= button_to "New", new_wiki_path, method: :get, class: 'btn btn-success' %>
 </div>
+<% end %>
  <% @wikis.each do |wiki| %>
    <div class="media">
      <div class="media-body">
-       <h4 class="media-heading">
-         <%= link_to wiki.title, wiki %>
-       </h4>
+       <% if wiki.published? %>
+         <h4 class="media-heading">
+           <%= link_to wiki.title, wiki %>
+         </h4>
+         <p>
+           <%= markdown(wiki.body) %>
+         </p>
+         <% if wiki.published_at %>
+          <h5>Published <%= time_ago_in_words wiki.published_at %> ago</h5>
+         <% end %>
+         <% if wiki != @wikis.last %>
+         <hr/>
+         <% end %>
+       <% elsif user_signed_in? && (current_user.role == "premium" || current_user.role == "admin") %>
+         <h4 class="media-heading">
+           <h4> *Private Wiki* </h4>
+           <%= link_to wiki.title, wiki %>
+         </h4>
+         <p>
+           <%= markdown(wiki.body) %>
+         </p>
+         <% if wiki.published_at %>
+          <h5>Published <%= time_ago_in_words wiki.published_at %> ago</h5>
+         <% end %>
+         <% if wiki != @wikis.last %>
+         <hr/>
+         <% end %>
+       <% end %>
      </div>
    </div>
- <% end %>
+<% end %>

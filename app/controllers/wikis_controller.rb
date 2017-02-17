@@ -1,6 +1,8 @@
 class WikisController < ApplicationController
+
   def index
     @wikis = Wiki.all
+
   end
 
   def show
@@ -20,6 +22,7 @@ class WikisController < ApplicationController
     authorize @wiki
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.published = params[:wiki][:published]
 
     if @wiki.save
       flash[:notice] = "Wiki was updated."
@@ -34,6 +37,8 @@ class WikisController < ApplicationController
     @wiki = current_user.wikis.new
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.published = params[:wiki][:published]
+
 
     if @wiki.save
 

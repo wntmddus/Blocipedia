@@ -27,6 +27,9 @@ gem "pundit"
 gem 'faker'
 gem 'stripe'
 gem 'figaro'
+gem 'redcarpet'
+gem 'albino'
+gem 'nokogiri'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

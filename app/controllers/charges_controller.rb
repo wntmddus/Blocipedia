@@ -19,7 +19,7 @@ class ChargesController < ApplicationController
     current_user.role = :premium
     current_user.save
     redirect_to user_path(current_user) # or wherever
-
+    
     # Stripe will send back CardErrors, with friendly messages
     # when something goes wrong.
     # This `rescue block` catches and displays those errors.

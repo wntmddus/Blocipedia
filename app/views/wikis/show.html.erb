@@ -2,8 +2,13 @@
 
 <div class="row">
   <div class="col-md-8">
-    <p><%= @wiki.body %></p>
+    <%= markdown(@wiki.body) %>
   </div>
+  <%= @wiki.published %>
+  <% if @wiki.published_at %>
+    <h4>Published <%= time_ago_in_words(@wiki.published_at) %> ago</h4>
+  <% end %>
+  <%= link_to "Back to Index", wikis_path %>
   <div class="col-md-4">
     <% if policy(@wiki).update? %>
       <%= link_to "Edit Wiki", edit_wiki_path(@wiki), class: 'btn btn-success' %>
