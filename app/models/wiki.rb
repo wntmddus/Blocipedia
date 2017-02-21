@@ -1,5 +1,8 @@
 class Wiki < ApplicationRecord
   belongs_to :user
+
+  has_many :collaborations
+  has_many :collaboration_users, through: :collaborations, :source => :user
   #default_scope { where(published: true) }
   before_save :update_published_at, if: Proc.new {|w| w.published_changed?}
   before_save :set_published

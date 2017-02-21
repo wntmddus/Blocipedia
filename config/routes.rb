@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :wikis
+  get 'collaborations/create'
+
+  get 'collaborations/destroy'
+
+  resources :wikis do
+    resources :collaborations, only: [:new, :create, :destroy]
+  end
 
   devise_for :users
 

@@ -1,0 +1,8 @@
+<h4>Collaborations</h4>
+<ul>
+	<% @wiki.collaborations.each do |collaboration| %>
+		<li>
+			<h4><%= collaboration.user.email %> <%= link_to "", "/wikis/#{@wiki.id}/collaborations/#{collaboration.id}", method: :delete, class: 'glyphicon glyphicon-remove' %> </h4>
+		</li>
+	<% end %>
+</ul>

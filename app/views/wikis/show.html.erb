@@ -15,4 +15,9 @@
       <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this wiki?'} %>
     <% end %>
   </div>
+  <% if @wiki.published %>
+      <% if Collaboration.exists?(wiki_id: @wiki) %>
+        <%= render partial: 'collaborations/users' %>
+      <% end %>
+  <% end %>
 </div>
